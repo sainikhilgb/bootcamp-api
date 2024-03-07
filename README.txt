@@ -15,3 +15,5 @@ npm run dev
 
 #run app in prod mode
 npm start
+
+#Refre the index.html for API documentation

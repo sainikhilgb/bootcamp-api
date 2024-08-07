@@ -12,12 +12,11 @@ const error = require('./middleware/error')
 const connectDB = require('./config/db')
 
 
-
-//Load env vars
 dotenv.config({path: './config/config.env'})
 
 //connect DB
 connectDB()
+
 
 //Router files
 const bootcamps = require('./routes/bootcamp')
@@ -28,16 +27,16 @@ const reviews = require('./routes/reviews')
 
 const app = express()
 
-//Body parser
-app.use(express.json())
-
-//cookie parser
-
-app.use(cookieParser())
 
 if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'))
 }
+//Body parser
+app.use(express.json())
+
+//cookie parser
+app.use(cookieParser())
+
 
 //Fileupload 
 app.use(fileUpload())
@@ -66,9 +65,8 @@ app.use('/api/v1/users',users)
 app.use('/api/v1/reviews',reviews)
 
 app.use(error)
+
 const PORT = process.env.PORT || 5000
-
-
 const server =app.listen(PORT,console.log(`Server started running in ${process.env.NODE_ENV} on port ${PORT}`.blue))
 
 //Handle unhandled promise rejections
@@ -77,3 +75,4 @@ console.log(`Err: ${err.message}`.red)
 //close the server
 server.close(()=>process.exit(1))
 })
+

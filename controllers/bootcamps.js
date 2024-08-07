@@ -24,7 +24,7 @@ exports.getbootcamp = asyncHandler(async (req,res,next)=>{
            return next(new ErrorResponse(`Bootcamp not found of id ${req.params.id}`,404))
         }
         res.status(200).json({
-            sucess: true,
+            success: true,
             data:  bootcamp
           })
        })
@@ -47,7 +47,7 @@ exports.createbootcamp = asyncHandler(async (req,res,next)=>{
   
   const bootcamp = await Bootcamp.create(req.body)
   res.status(201).json({
-    sucess: true,
+    success: true,
     data:  bootcamp
   })
     
